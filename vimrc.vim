@@ -7,7 +7,6 @@ source $VIMRUNTIME/vimrc_example.vim
 :au BufRead,BufNewFile *.dmg    setfiletype asm         " SM83 assembly
 :au BufRead,BufNewFile *.sx     setfiletype asm         " gas assembly
 :au BufRead,BufNewFile *.bsa    setfiletype c           " ? bass assembly?
-:au BufRead,BufNewFile *.hsl    setfiletype javascript  " hatch engine
 
 " cpp setup
 let g:cpp_function_highlight = 0
@@ -32,7 +31,6 @@ call plug#begin()
 	Plug 'keith/parsec.vim'
 	Plug 'nvimdev/oceanic-material'
 	" misc ----------------------------------------------@/
-	" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'preservim/nerdtree'
 	Plug 'jistr/vim-nerdtree-tabs'
 	Plug 'vim-airline/vim-airline'
