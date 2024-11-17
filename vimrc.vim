@@ -1,4 +1,5 @@
 " Vim with all enhancements
+source $VIMRUNTIME/defaults.vim
 " source $VIMRUNTIME/vimrc_example.vim
 
 " mine
