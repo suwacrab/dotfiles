@@ -1,5 +1,5 @@
 " Vim with all enhancements
-source $VIMRUNTIME/vimrc_example.vim
+" source $VIMRUNTIME/vimrc_example.vim
 
 " mine
 :au BufRead,BufNewFile *.tra    setfiletype terra
