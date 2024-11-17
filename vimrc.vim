@@ -68,10 +68,12 @@ let g:airline_right_sep = '◀'
 :set foldcolumn=1
 :let g:javaScript_fold=1
 
+set hlsearch            " the best search
 :set updatetime=100		" 300ms update (default is 4000)
 :set colorcolumn=80		" after 80 columns, show red bar
 :set columns=201		" about 2 screens wide, plus enough for tree
 
+:set noswapfile
 ":set backupdir=$TEMP//
 ":set directory=$TEMP//
 ":set undodir=$TEMP
