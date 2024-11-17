@@ -71,7 +71,7 @@ let g:airline_right_sep = '◀'
 :set colorcolumn=80		" after 80 columns, show red bar
 :set columns=201		" about 2 screens wide, plus enough for tree
 
-:set backupdir=$TEMP//
-:set directory=$TEMP//
-:set undodir=$TEMP
+":set backupdir=$TEMP//
+":set directory=$TEMP//
+":set undodir=$TEMP
 
