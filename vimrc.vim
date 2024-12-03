@@ -36,6 +36,9 @@ call plug#begin()
 	Plug 'jistr/vim-nerdtree-tabs'
 	Plug 'vim-airline/vim-airline'
 	Plug 'tpope/vim-fugitive'
+
+	Plug 'godlygeek/tabular'
+	Plug 'preservim/vim-markdown'
 call plug#end()
 
 autocmd VimEnter * NERDTree
@@ -51,6 +54,9 @@ let g:airline_left_sep = '»'
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '«'
 let g:airline_right_sep = '◀'
+
+" markdown
+let g:vim_markdown_folding_disabled = 1
 
 " misc
 :colo dogrun
@@ -68,7 +74,8 @@ let g:airline_right_sep = '◀'
 :set foldcolumn=1
 :let g:javaScript_fold=1
 
-set hlsearch            " the best search
+:set hlsearch           " the best search
+:set incsearch          " also, do that too
 :set updatetime=100		" 300ms update (default is 4000)
 :set colorcolumn=80		" after 80 columns, show red bar
 :set columns=201		" about 2 screens wide, plus enough for tree
