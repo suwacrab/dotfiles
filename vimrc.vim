@@ -31,7 +31,9 @@ call plug#begin()
 	Plug 'cocopon/iceberg.vim'
 	Plug 'keith/parsec.vim'
 	Plug 'nvimdev/oceanic-material'
+	Plug 'morhetz/gruvbox'
 	" misc ----------------------------------------------@/
+	Plug 'kshenoy/vim-signature'
 	Plug 'preservim/nerdtree'
 	Plug 'jistr/vim-nerdtree-tabs'
 	Plug 'vim-airline/vim-airline'
@@ -59,7 +61,7 @@ let g:airline_right_sep = '◀'
 let g:vim_markdown_folding_disabled = 1
 
 " misc
-:colo dogrun
+:colo gruvbox
 ":set guifont=MS_Gothic:h9:cSHIFTJIS:qDRAFT
 ":set guifont=tewi:h8:cSHIFTJIS:qDRAFT
 :set guifont=tewi:h8
@@ -69,14 +71,14 @@ let g:vim_markdown_folding_disabled = 1
 :set tabstop=4 		" tabs are 4 wide
 :set shiftwidth=4 	" same for shifting lines
 :set belloff=all
-:set clipboard=unnamed
+:set clipboard=unnamedplus
 :set foldmethod=syntax
 :set foldcolumn=1
 :let g:javaScript_fold=1
 
 :set hlsearch           " the best search
 :set incsearch          " also, do that too
-:set updatetime=100		" 300ms update (default is 4000)
+:set updatetime=100		" 100ms update (default is 4000)
 :set colorcolumn=80		" after 80 columns, show red bar
 :set columns=201		" about 2 screens wide, plus enough for tree
 
