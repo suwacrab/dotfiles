@@ -34,16 +34,12 @@ call plug#begin()
 	Plug 'morhetz/gruvbox'
 	" misc ----------------------------------------------@/
 	Plug 'kshenoy/vim-signature'
-	Plug 'preservim/nerdtree'
-	Plug 'jistr/vim-nerdtree-tabs'
 	Plug 'vim-airline/vim-airline'
 	Plug 'tpope/vim-fugitive'
 
 	Plug 'godlygeek/tabular'
 	Plug 'preservim/vim-markdown'
 call plug#end()
-
-autocmd VimEnter * NERDTree
 
 " js setup
 augroup javascript_folding
