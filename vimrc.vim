@@ -61,6 +61,8 @@ let g:vim_markdown_folding_disabled = 1
 ":set guifont=MS_Gothic:h9:cSHIFTJIS:qDRAFT
 ":set guifont=tewi:h8:cSHIFTJIS:qDRAFT
 :set guifont=tewi:h8
+:set guioptions -=T
+:set guioptions -=m 
 :set number
 :set nowrap
 :set noexpandtab 	" don't convert tabs to spaces.
@@ -76,7 +78,7 @@ let g:vim_markdown_folding_disabled = 1
 :set incsearch          " also, do that too
 :set updatetime=100		" 100ms update (default is 4000)
 :set colorcolumn=80		" after 80 columns, show red bar
-:set columns=201		" about 2 screens wide, plus enough for tree
+:set columns=173		" about 2 screens wide, plus enough for tree
 
 :set noswapfile
 ":set backupdir=$TEMP//
