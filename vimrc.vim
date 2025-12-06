@@ -33,6 +33,7 @@ call plug#begin()
 	Plug 'bfrg/vim-cpp-modern'
 	Plug 'kalvinpearce/ShaderHighlight'
 	Plug 'preservim/vim-markdown'
+	Plug 'ap/vim-css-color'
 	" colorschemes --------------------------------------@/
 	Plug 'sts10/vim-pink-moon'
 	Plug 'wadackel/vim-dogrun'
