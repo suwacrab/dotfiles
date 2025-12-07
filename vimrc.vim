@@ -99,7 +99,7 @@ let g:airline_theme='gruvbox'
 :set incsearch          " also, do that too
 :set updatetime=100     " 100ms update (default is 4000)
 :set colorcolumn=80     " after 80 columns, show red bar
-:set columns=173        " about 2 screens wide, plus enough for tree
+:set columns=176        " about 2 screens wide, plus enough for extras
 
 :noh
 
