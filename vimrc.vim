@@ -78,13 +78,15 @@ let g:vim_markdown_fenced_languages= ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dos
 :colorscheme gruvbox
 let g:airline_theme='gruvbox'
 :set guifont=tewi:h8
-:set guioptions -=T  " disable GUI toolbar
-:set guioptions -=m  " disable GUI menubar
-:set guioptions -=e  " disable GUI tabs
-:set guioptions-=l   " disable GUI left scrollbar
-:set guioptions-=L   " ditto
-:set guioptions-=R   " disable GUI right scrollbar
-:set guioptions-=r   " ditto
+if has("gui_running")
+	:set guioptions -=T  " disable GUI toolbar
+	:set guioptions -=m  " disable GUI menubar
+	:set guioptions -=e  " disable GUI tabs
+	:set guioptions-=l   " disable GUI left scrollbar
+	:set guioptions-=L   " ditto
+	:set guioptions-=R   " disable GUI right scrollbar
+	:set guioptions-=r   " ditto
+endif
 :set number          " enable line numbers
 :set nowrap          " disable line wrapping
 :set noexpandtab     " don't convert tabs to spaces.
