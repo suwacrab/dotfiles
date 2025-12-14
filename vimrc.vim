@@ -49,17 +49,16 @@ call plug#begin()
 	if has('nvim')
 	Plug 'lukas-reineke/indent-blankline.nvim'
 	endif
-
 call plug#end()
 
-" js setup (i don't even use js anymore, why is this here...)
+" js setup ----------------------------------------------@/
 augroup javascript_folding
 	au!
 	au FileType javascript setlocal foldmethod=syntax
 augroup END
 let g:javaScript_fold=1
 
-" airline config
+" airline config ----------------------------------------@/
 let g:airline_left_sep = '»'
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '«'
@@ -68,7 +67,7 @@ let g:airline_left_sep = '✦'
 let g:airline_right_sep = '✦'
 "let g:airline_detect_whitespace=0 " disable trailing warning
 
-" markdown
+" markdown ----------------------------------------------@/
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_fenced_languages= ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini', 'c']
 " let g:vim_markdown_fenced_languages= ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini']
@@ -87,15 +86,16 @@ if has("gui_running")
 	:set guioptions-=R   " disable GUI right scrollbar
 	:set guioptions-=r   " ditto
 endif
-:set number          " enable line numbers
-:set nowrap          " disable line wrapping
-:set noexpandtab     " don't convert tabs to spaces.
-:set tabstop=4       " tabs are 4 wide
-:set shiftwidth=4    " same for shifting lines
-:set belloff=all     " disable that annoying as fuck bell
+:set number            " enable line numbers
+:set nowrap            " disable line wrapping
+:set noexpandtab       " don't convert tabs to spaces.
+:set tabstop=4         " tabs are 4 wide
+:set shiftwidth=4      " same for shifting lines
+:set belloff=all       " disable that annoying as fuck bell
 :set clipboard=unnamed " fix pasting (NOTE: on linux, use unnamedplus)
 :set foldmethod=syntax " enable folding based on syntax
 :set foldcolumn=2
+:set autoindent        " automatically indent lines
 
 :set hlsearch           " highlight when searching
 :set incsearch          " also, do that too
@@ -103,9 +103,9 @@ endif
 :set colorcolumn=80     " after 80 columns, show red bar
 :set columns=176        " about 2 screens wide, plus enough for extras
 
-:noh
+:noh " clear highlighting, just in case
 
-" neovide config
+" neovide-only config -------------------------------------------------------@/
 if exists("g:neovide")
     " Put anything you want to happen only in Neovide here
 	:set guifont=tewi:h8:#e-alias:#h-none
@@ -119,10 +119,10 @@ if exists("g:neovide")
 	let g:neovide_scroll_animation_length = 0.00
 endif
 
-" backup file storage
+" backup file storage -------------------------------------------------------@/
+:set swapfile
 " * NOTE: for linux, the below should be uncommented...? haven't tested yet.
-:set noswapfile
-":set backupdir=$TEMP//
-":set directory=$TEMP//
-":set undodir=$TEMP
+:set backupdir=$TEMP//
+:set directory=$TEMP//
+:set undodir=$TEMP
 
