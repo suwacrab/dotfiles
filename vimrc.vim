@@ -28,6 +28,7 @@ call plug#begin()
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'tpope/vim-fugitive'
 	Plug 'markonm/traces.vim'
+	Plug 'Yggdroot/indentLine'
 	" languages -----------------------------------------@/
 	Plug 'pangloss/vim-javascript'
 	Plug 'wsdjeg/vim-lua'
@@ -78,6 +79,8 @@ let g:gruvbox_contrast_light='soft'
 let g:gruvbox_bold=0
 let g:stella_bold=0
 
+set list lcs=tab:\┊\ 
+
 " misc ----------------------------------------------------------------------@/
 set background=light
 colorscheme stella
@@ -114,7 +117,7 @@ set columns=176        " about 2 screens wide, plus enough for extras
 
 " neovide-only config -------------------------------------------------------@/
 if exists("g:neovide")
-    " Put anything you want to happen only in Neovide here
+	" Put anything you want to happen only in Neovide here
 	set guifont=tewi:h8:#e-alias:#h-none
 
 	let g:neovide_position_animation_length = 0
