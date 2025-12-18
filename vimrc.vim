@@ -3,11 +3,11 @@
 set backspace=indent,eol,start
 
 " syntax highlighting -------------------------------------------------------@/
-:au BufRead,BufNewFile *.tra    setfiletype terra       " terra language
-:au BufRead,BufNewFile *.inc    setfiletype asm         " .inc is only for ASM
-:au BufRead,BufNewFile *.dmg    setfiletype asm         " SM83 assembly
-:au BufRead,BufNewFile *.sx     setfiletype asm         " GNU assembly
-:au BufRead,BufNewFile *.bsa    setfiletype c           " near's bass assembler
+au BufRead,BufNewFile *.tra    setfiletype terra       " terra language
+au BufRead,BufNewFile *.inc    setfiletype asm         " .inc is only for ASM
+au BufRead,BufNewFile *.dmg    setfiletype asm         " SM83 assembly
+au BufRead,BufNewFile *.sx     setfiletype asm         " GNU assembly
+au BufRead,BufNewFile *.bsa    setfiletype c           " near's bass assembler
 
 " cpp setup -----------------------------------------------------------------@/
 let g:cpp_function_highlight = 0
@@ -74,13 +74,16 @@ let g:vim_markdown_fenced_languages= ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dos
 " let g:vim_markdown_fenced_languages= ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini']
 
 " color -------------------------------------------------@/
-
+let g:gruvbox_contrast_light='soft'
+let g:gruvbox_bold=0
+let g:stella_bold=0
 
 " misc ----------------------------------------------------------------------@/
 set background=light
-:colorscheme gruvbox
-let g:airline_theme='gruvbox'
+colorscheme stella
+let g:airline_theme='stella'
 set guifont=tewi:h8
+set notermguicolors
 if has("gui_running")
 	set guioptions -=T  " disable GUI toolbar
 	set guioptions -=m  " disable GUI menubar
