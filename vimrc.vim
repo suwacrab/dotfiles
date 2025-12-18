@@ -1,5 +1,6 @@
 " grab defaults from base vim -----------------------------------------------@/
-source $VIMRUNTIME/defaults.vim
+" source $VIMRUNTIME/defaults.vim
+set backspace=indent,eol,start
 
 " syntax highlighting -------------------------------------------------------@/
 :au BufRead,BufNewFile *.tra    setfiletype terra       " terra language
@@ -29,7 +30,7 @@ call plug#begin()
 	Plug 'markonm/traces.vim'
 	" languages -----------------------------------------@/
 	Plug 'pangloss/vim-javascript'
-	Plug 'tbastos/vim-lua'
+	Plug 'wsdjeg/vim-lua'
 	Plug 'bfrg/vim-cpp-modern'
 	Plug 'kalvinpearce/ShaderHighlight'
 	Plug 'preservim/vim-markdown'
@@ -72,43 +73,46 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_fenced_languages= ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini', 'c']
 " let g:vim_markdown_fenced_languages= ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini']
 
+" color -------------------------------------------------@/
+
+
 " misc ----------------------------------------------------------------------@/
-:set background=light
+set background=light
 :colorscheme gruvbox
 let g:airline_theme='gruvbox'
-:set guifont=tewi:h8
+set guifont=tewi:h8
 if has("gui_running")
-	:set guioptions -=T  " disable GUI toolbar
-	:set guioptions -=m  " disable GUI menubar
-	:set guioptions -=e  " disable GUI tabs
-	:set guioptions-=l   " disable GUI left scrollbar
-	:set guioptions-=L   " ditto
-	:set guioptions-=R   " disable GUI right scrollbar
-	:set guioptions-=r   " ditto
+	set guioptions -=T  " disable GUI toolbar
+	set guioptions -=m  " disable GUI menubar
+	set guioptions -=e  " disable GUI tabs
+	set guioptions-=l   " disable GUI left scrollbar
+	set guioptions-=L   " ditto
+	set guioptions-=R   " disable GUI right scrollbar
+	set guioptions-=r   " ditto
 endif
-:set number            " enable line numbers
-:set nowrap            " disable line wrapping
-:set noexpandtab       " don't convert tabs to spaces.
-:set tabstop=4         " tabs are 4 wide
-:set shiftwidth=4      " same for shifting lines
-:set belloff=all       " disable that annoying as fuck bell
-:set clipboard=unnamed " fix pasting (NOTE: on linux, use unnamedplus)
-:set foldmethod=syntax " enable folding based on syntax
-:set foldcolumn=2
-:set autoindent        " automatically indent lines
+set number            " enable line numbers
+set nowrap            " disable line wrapping
+set noexpandtab       " don't convert tabs to spaces.
+set tabstop=4         " tabs are 4 wide
+set shiftwidth=4      " same for shifting lines
+set belloff=all       " disable that annoying as fuck bell
+set clipboard=unnamed " fix pasting (NOTE: on linux, use unnamedplus)
+set foldmethod=syntax " enable folding based on syntax
+set foldcolumn=2
+set autoindent        " automatically indent lines
 
-:set hlsearch           " highlight when searching
-:set incsearch          " also, do that too
-:set updatetime=100     " 100ms update (default is 4000)
-:set colorcolumn=80     " after 80 columns, show red bar
-:set columns=176        " about 2 screens wide, plus enough for extras
+set hlsearch           " highlight when searching
+set incsearch          " also, do that too
+set updatetime=100     " 100ms update (default is 4000)
+set colorcolumn=80     " after 80 columns, show red bar
+set columns=176        " about 2 screens wide, plus enough for extras
 
 :noh " clear highlighting, just in case
 
 " neovide-only config -------------------------------------------------------@/
 if exists("g:neovide")
     " Put anything you want to happen only in Neovide here
-	:set guifont=tewi:h8:#e-alias:#h-none
+	set guifont=tewi:h8:#e-alias:#h-none
 
 	let g:neovide_position_animation_length = 0
 	let g:neovide_cursor_animation_length = 0.00
@@ -120,9 +124,9 @@ if exists("g:neovide")
 endif
 
 " backup file storage -------------------------------------------------------@/
-:set swapfile
+set swapfile
 " * NOTE: for linux, the below should be uncommented...? haven't tested yet.
-:set backupdir=$TEMP//
-:set directory=$TEMP//
-:set undodir=$TEMP
+set backupdir=$TEMP//
+set directory=$TEMP//
+set undodir=$TEMP
 
