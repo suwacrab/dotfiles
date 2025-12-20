@@ -121,10 +121,6 @@ endif
 " tagbar ------------------------------------------------@/
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_show_data_type = 1
-"nmap <F8> :Vista!!<CR>
-"let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-"let g:vista_sidebar_width = 40
-"let g:vista_default_executive = 'ctags'
 
 " misc ----------------------------------------------------------------------@/
 set background=light
