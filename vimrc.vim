@@ -29,6 +29,8 @@ call plug#begin()
 	Plug 'tpope/vim-fugitive'
 	Plug 'markonm/traces.vim'
 	Plug 'Yggdroot/indentLine'
+	Plug 'Konfekt/FastFold'
+	Plug 'preservim/tagbar'
 	" languages -----------------------------------------@/
 	Plug 'pangloss/vim-javascript'
 	Plug 'wsdjeg/vim-lua'
@@ -44,7 +46,8 @@ call plug#begin()
 	Plug 'nvimdev/oceanic-material'
 	Plug 'morhetz/gruvbox'
 	Plug 'jaredgorski/Mies.vim'
-	Plug 'suwacrab/stella'
+	"Plug 'suwacrab/stella'
+	Plug 'C:\KM-20\art\brew\repo\stella'
 
 	Plug 'godlygeek/tabular'
 
@@ -61,18 +64,36 @@ augroup END
 let g:javaScript_fold=1
 
 " airline config ----------------------------------------@/
+let s:line_sepL = ''
+let s:line_sepR = ''
 let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
 let g:airline_right_sep = '«'
+let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
-let g:airline_left_sep = '✦'
-let g:airline_right_sep = '✦'
+"let g:airline_left_sep = '✦'
+"let g:airline_right_sep = '✦'
 "let g:airline_detect_whitespace=0 " disable trailing warning
+let g:airline_left_sep = s:line_sepL
+let g:airline_right_sep = s:line_sepR
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = s:line_sepL
+let g:airline#extensions#tabline#right_sep = s:line_sepR
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.linenr=''
+"let g:airline_symbols.maxlinenr=''
 
 " markdown ----------------------------------------------@/
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_fenced_languages= ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini', 'c']
 " let g:vim_markdown_fenced_languages= ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini']
+
+" fastfold ----------------------------------------------@/
+nmap zuz <Plug>(FastFoldUpdate)
+let g:fastfold_savehook = 1
+let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
+let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
 
 " color -------------------------------------------------@/
 let g:gruvbox_contrast_light='soft'
@@ -80,6 +101,13 @@ let g:gruvbox_bold=0
 let g:stella_bold=0
 
 set list lcs=tab:\┊\ 
+
+" gvim --------------------------------------------------@/
+if has('win32')
+	if has('gui_running')
+		set renderoptions=type:directx,renmode:6,taamode:0
+	endif
+endif
 
 " misc ----------------------------------------------------------------------@/
 set background=light
@@ -112,6 +140,7 @@ set incsearch          " also, do that too
 set updatetime=100     " 100ms update (default is 4000)
 set colorcolumn=80     " after 80 columns, show red bar
 set columns=176        " about 2 screens wide, plus enough for extras
+set nocursorcolumn     " no veritcal cursor visual
 
 :noh " clear highlighting, just in case
 
