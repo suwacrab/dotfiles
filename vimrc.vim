@@ -29,15 +29,19 @@ call plug#begin()
 	Plug 'tpope/vim-fugitive'
 	Plug 'markonm/traces.vim'
 	Plug 'Yggdroot/indentLine'
-	Plug 'Konfekt/FastFold'
+	if !has('nvim')
+		Plug 'Konfekt/FastFold'
+	endif
 	Plug 'preservim/tagbar'
+"	Plug 'liuchengxu/vista.vim'
 	" languages -----------------------------------------@/
 	Plug 'pangloss/vim-javascript'
-	Plug 'wsdjeg/vim-lua'
 	Plug 'bfrg/vim-cpp-modern'
 	Plug 'kalvinpearce/ShaderHighlight'
 	Plug 'preservim/vim-markdown'
 	Plug 'ap/vim-css-color'
+	Plug 'suwacrab/BetterLua.vim'
+"	Plug 'C:\KM-20\art\brew\repo\BetterLua.vim'
 	" colorschemes --------------------------------------@/
 	Plug 'sts10/vim-pink-moon'
 	Plug 'wadackel/vim-dogrun'
@@ -52,7 +56,10 @@ call plug#begin()
 	Plug 'godlygeek/tabular'
 
 	if has('nvim')
-	Plug 'lukas-reineke/indent-blankline.nvim'
+		Plug 'lukas-reineke/indent-blankline.nvim'
+		Plug 'nvim-treesitter/nvim-treesitter'
+		Plug 'kevinhwang91/promise-async' " depend VVV
+		Plug 'kevinhwang91/nvim-ufo'
 	endif
 call plug#end()
 
@@ -100,14 +107,24 @@ let g:gruvbox_contrast_light='soft'
 let g:gruvbox_bold=0
 let g:stella_bold=0
 
-set list lcs=tab:\┊\ 
+if !has('nvim')
+	set list lcs=tab:\┊\ 
+endif
 
 " gvim --------------------------------------------------@/
 if has('win32')
 	if has('gui_running')
-		set renderoptions=type:directx,renmode:6,taamode:0
+		" set renderoptions=type:directx,renmode:6,taamode:0
 	endif
 endif
+
+" tagbar ------------------------------------------------@/
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_show_data_type = 1
+"nmap <F8> :Vista!!<CR>
+"let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+"let g:vista_sidebar_width = 40
+"let g:vista_default_executive = 'ctags'
 
 " misc ----------------------------------------------------------------------@/
 set background=light
@@ -132,7 +149,7 @@ set shiftwidth=4      " same for shifting lines
 set belloff=all       " disable that annoying as fuck bell
 set clipboard=unnamed " fix pasting (NOTE: on linux, use unnamedplus)
 set foldmethod=syntax " enable folding based on syntax
-set foldcolumn=2
+set foldcolumn=0      " disable numbers to left of folds
 set autoindent        " automatically indent lines
 
 set hlsearch           " highlight when searching
