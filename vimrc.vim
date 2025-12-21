@@ -28,12 +28,10 @@ call plug#begin()
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'tpope/vim-fugitive'
 	Plug 'markonm/traces.vim'
-	Plug 'Yggdroot/indentLine'
 	if !has('nvim')
 		Plug 'Konfekt/FastFold'
 	endif
 	Plug 'preservim/tagbar'
-"	Plug 'liuchengxu/vista.vim'
 	" languages -----------------------------------------@/
 	Plug 'pangloss/vim-javascript'
 	Plug 'bfrg/vim-cpp-modern'
@@ -41,7 +39,6 @@ call plug#begin()
 	Plug 'preservim/vim-markdown'
 	Plug 'ap/vim-css-color'
 	Plug 'suwacrab/BetterLua.vim'
-"	Plug 'C:\KM-20\art\brew\repo\BetterLua.vim'
 	" colorschemes --------------------------------------@/
 	Plug 'sts10/vim-pink-moon'
 	Plug 'wadackel/vim-dogrun'
@@ -50,13 +47,11 @@ call plug#begin()
 	Plug 'nvimdev/oceanic-material'
 	Plug 'morhetz/gruvbox'
 	Plug 'jaredgorski/Mies.vim'
-	"Plug 'suwacrab/stella'
-	Plug 'C:\KM-20\art\brew\repo\stella'
-
+	Plug 'suwacrab/stella'
 	Plug 'godlygeek/tabular'
 
 	if has('nvim')
-		Plug 'lukas-reineke/indent-blankline.nvim'
+	"	Plug 'lukas-reineke/indent-blankline.nvim'
 		Plug 'nvim-treesitter/nvim-treesitter'
 		Plug 'kevinhwang91/promise-async' " depend VVV
 		Plug 'kevinhwang91/nvim-ufo'
@@ -79,7 +74,7 @@ let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 "let g:airline_left_sep = '✦'
 "let g:airline_right_sep = '✦'
-"let g:airline_detect_whitespace=0 " disable trailing warning
+let g:airline#extensions#whitespace#enabled=0 " disable trailing warning
 let g:airline_left_sep = s:line_sepL
 let g:airline_right_sep = s:line_sepR
 let g:airline#extensions#tabline#enabled = 1
@@ -107,9 +102,10 @@ let g:gruvbox_contrast_light='soft'
 let g:gruvbox_bold=0
 let g:stella_bold=0
 
-if !has('nvim')
-	set list lcs=tab:\┊\ 
-endif
+"if !has('nvim')
+"	set list lcs=tab:\┊\ 
+	set list lcs=tab:\\ 
+"endif
 
 " gvim --------------------------------------------------@/
 if has('win32')
@@ -147,6 +143,7 @@ set clipboard=unnamed " fix pasting (NOTE: on linux, use unnamedplus)
 set foldmethod=syntax " enable folding based on syntax
 set foldcolumn=0      " disable numbers to left of folds
 set autoindent        " automatically indent lines
+set conceallevel=0    " lower line concealing, as it messes up .md if set to 2
 
 set hlsearch           " highlight when searching
 set incsearch          " also, do that too
