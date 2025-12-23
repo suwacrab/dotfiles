@@ -294,8 +294,10 @@ while true do
 	-- write window title -------------------------------@/
 	textmode_append("%{T-}")
 	textmode_fglightSet()
-	textmode_append("  %{B#00000000}  ")
-	textmode_bgReset()
+	if use_barSpacing then
+		textmode_append("  %{B#00000000}  ")
+		textmode_bgReset()
+	end
 	textmode_append(" ")
 	textmode_fgReset()
 	do
@@ -343,9 +345,12 @@ while true do
 	
 	-- write memory usage -------------------------------@/
 	textmode_append("%{r}")
-	textmode_append("  %{B#00000000}  ")
-	textmode_bgReset()
+	if use_barSpacing then
+		textmode_append("  %{B#00000000}  ")
+		textmode_bgReset()
+	end
 	textmode_append("  %{T-}")
+
 	do
 		local mem_cur = tonumber(popen_readFixed('free -m | awk \'/Mem:/ { printf("%3.1f%%", $3) }\''))
 		local mem_cent = (mem_cur / mem_max)
