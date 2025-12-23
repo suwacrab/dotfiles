@@ -46,7 +46,7 @@ MONITOR_SIZEX = tonumber(MONITOR_SIZEX)
 MONITOR_SIZEY = tonumber(MONITOR_SIZEY)
 
 local BAR_WIDTH = MONITOR_SIZEX - 16
-local BAR_HEIGHT = 20
+local BAR_HEIGHT = 18
 local BAR_X = (MONITOR_SIZEX-BAR_WIDTH) / 2
 local BAR_Y = 8
 local MONITOR_ID = 0
@@ -263,6 +263,9 @@ while true do
 	local function textmode_fgReset()
 		truestr = truestr.."%{F-}"
 	end
+	local function textmode_bgReset()
+		textmode_append("%{B-}")
+	end
 	-- write tags ---------------------------------------@/
 	textmode_append("%{T-}")
 	for i = 0,9 do
@@ -291,7 +294,9 @@ while true do
 	-- write window title -------------------------------@/
 	textmode_append("%{T-}")
 	textmode_fglightSet()
-	textmode_append(" | ")
+	textmode_append("  %{B#00000000}  ")
+	textmode_bgReset()
+	textmode_append(" ")
 	textmode_fgReset()
 	do
 		local maxlen <const> = 100
@@ -338,7 +343,9 @@ while true do
 	
 	-- write memory usage -------------------------------@/
 	textmode_append("%{r}")
-	textmode_append("%{T-}")
+	textmode_append("  %{B#00000000}  ")
+	textmode_bgReset()
+	textmode_append("  %{T-}")
 	do
 		local mem_cur = tonumber(popen_readFixed('free -m | awk \'/Mem:/ { printf("%3.1f%%", $3) }\''))
 		local mem_cent = (mem_cur / mem_max)
@@ -408,7 +415,7 @@ while true do
 
 	-- write tags ---------------------------------------@/
 	if truestr ~= truestr_old then
-		local pad_amount = 3
+		local pad_amount = 2
 		local pad_str = (' '):rep(pad_amount)
 		hnd_lemon:write(('%s%s%s\n'):format(pad_str,truestr,pad_str))
 		truestr_old = truestr

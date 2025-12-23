@@ -34,6 +34,8 @@ call plug#begin()
 	"	Plug 'vim-airline/vim-airline-themes'
 	else
 		Plug 'nvim-lualine/lualine.nvim'
+		Plug 'nvim-tree/nvim-tree.lua'
+		Plug 'nvim-tree/nvim-web-devicons'
 	endif
 	" languages -----------------------------------------@/
 	Plug 'pangloss/vim-javascript'

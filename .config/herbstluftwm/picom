@@ -26,21 +26,17 @@ rules = (
 		# bar
 		match = "class_i='lemonbar' && !focused";
 		dim = 0.0;
-		opacity = 0.8;
+		opacity = 0.85;
 		shadow = false;
 	},
 );
-
-opacity-rule = [
-  "0:_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'"
-];
 
 backend = "glx";
 glx-no-stencil = true;
 glx-copy-from-front = false;
 glx-no-rebind-pixmap = true;
 inactive-dim = 0.8;
-corner-radius: 14;
+corner-radius: 10;
 use-damage = true;
 
 # shadows -------------------------------------------------------------------@/
@@ -50,28 +46,6 @@ shadow-opacity: .7;
 shadow-offset-x: -2;
 shadow-offset-y: -2;
 shadow-color: "#200115";
-
-# animations ----------------------------------------------------------------@/
-animations = (
-	{
-		triggers = ["close", "hide"];
-		preset = "disappear";
-		duration = 0.2;
-		scale = 1.0;
-	},
-	{
-		triggers = ["open", "show"];
-		preset = "appear";
-		duration = 0.3;
-		scale = 0.98;
-	},
-	{
-		triggers = ["geometry"];
-		preset = "geometry-change";
-		duration = .15;
-		scale = .1;
-	}
-);
 
 blur: {
 	method = "dual_kawase";

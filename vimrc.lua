@@ -6,6 +6,8 @@ require('lualine').setup({
 		component_separators = { left = '◢', right = '◤' };
 	}
 })
+require('nvim-tree').setup()
+require('nvim-web-devicons').setup()
 
 vim.api.nvim_create_autocmd('FileType', {
 	pattern = { 'lua' },
