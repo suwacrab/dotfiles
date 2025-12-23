@@ -24,15 +24,17 @@ call plug#begin()
 	" misc ----------------------------------------------@/
 	Plug 'airblade/vim-gitgutter'
 	Plug 'kshenoy/vim-signature'
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
+"	Plug 'vim-airline/vim-airline'
+"	Plug 'vim-airline/vim-airline-themes'
 	Plug 'tpope/vim-fugitive'
 	Plug 'markonm/traces.vim'
-	if !has('nvim')
-		Plug 'Konfekt/FastFold'
-	endif
 	Plug 'preservim/tagbar'
 	Plug 'godlygeek/tabular'
+	if !has('nvim')
+		Plug 'Konfekt/FastFold'
+	else
+		Plug 'nvim-lualine/lualine.nvim'
+	endif
 	" languages -----------------------------------------@/
 	Plug 'pangloss/vim-javascript'
 	Plug 'bfrg/vim-cpp-modern'
@@ -86,6 +88,8 @@ endif
 let g:airline_symbols.linenr=''
 "let g:airline_symbols.maxlinenr=''
 
+
+
 " markdown ----------------------------------------------@/
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_fenced_languages= ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini', 'c']
@@ -99,6 +103,7 @@ let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
 
 " color -------------------------------------------------@/
 let g:gruvbox_contrast_light='soft'
+let g:gruvbox_termcolors=16
 let g:gruvbox_bold=0
 let g:stella_bold=0
 
@@ -107,7 +112,7 @@ let g:stella_bold=0
 if has('win32')
 	set list lcs=tab:\\ 
 else
-	set list lcs=tab:\▕\ 
+	set list lcs=tab:\│\ 
 endif
 "endif
 
@@ -139,17 +144,17 @@ if has("gui_running")
 	set guioptions-=r   " ditto
 	set columns=176     " about 2 screens wide, plus enough for extras
 endif
-set number            " enable line numbers
-set nowrap            " disable line wrapping
-set noexpandtab       " don't convert tabs to spaces.
-set tabstop=4         " tabs are 4 wide
-set shiftwidth=4      " same for shifting lines
-set belloff=all       " disable that annoying as fuck bell
-set clipboard=unnamed " fix pasting (NOTE: on linux, use unnamedplus)
-set foldmethod=syntax " enable folding based on syntax
-set foldcolumn=0      " disable numbers to left of folds
-set autoindent        " automatically indent lines
-set conceallevel=0    " lower line concealing, as it messes up .md if set to 2
+set number                " enable line numbers
+set nowrap                " disable line wrapping
+set noexpandtab           " don't convert tabs to spaces.
+set tabstop=4             " tabs are 4 wide
+set shiftwidth=4          " same for shifting lines
+set belloff=all           " disable that annoying as fuck bell
+set clipboard=unnamedplus " fix pasting (NOTE: on linux, use unnamedplus)
+set foldmethod=syntax     " enable folding based on syntax
+set foldcolumn=0          " disable numbers to left of folds
+set autoindent            " automatically indent lines
+set conceallevel=0        " lower line concealing, md messes up if !0
 
 set hlsearch           " highlight when searching
 set incsearch          " also, do that too

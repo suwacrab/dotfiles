@@ -1,0 +1,50 @@
+rules = (
+	{
+		match = "class_g != 'URxvt' && focused"; opacity = 1.0;
+	},
+	{
+		# active window
+		match = "focused";
+		opacity = 1.0; 
+	},
+	{ 
+		# inactive window
+		match = "!focused";
+		dim = 0.6;
+		opacity = 0.98;
+	},
+	{ 
+		# inactive discord window
+		match = "class_g='discord' && !focused";
+		dim = 0.6;
+	},
+	{ 
+		# bar
+		match = "class_i='lemonbar' && !focused";
+		dim = 0.0;
+		opacity = 0.8;
+		shadow = false;
+	},
+);
+
+backend = "xrender";
+glx-no-stencil = true;
+glx-copy-from-front = false;
+glx-no-rebind-pixmap = true;
+use-damage = true;
+inactive-dim = 0.8;
+corner-radius: 14;
+shadow-radius: 6;
+shadow-opacity: .7;
+shadow-offset-x: -2;
+shadow-offset-y: -2;
+shadow = true;
+shadow-color: "#200115";
+
+#blur: {
+#	method = "dual_kawase";
+#	strength = 0.1;
+#	deviation = 1.0;
+#};
+
+
