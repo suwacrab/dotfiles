@@ -32,6 +32,7 @@ call plug#begin()
 		Plug 'Konfekt/FastFold'
 	endif
 	Plug 'preservim/tagbar'
+	Plug 'godlygeek/tabular'
 	" languages -----------------------------------------@/
 	Plug 'pangloss/vim-javascript'
 	Plug 'bfrg/vim-cpp-modern'
@@ -40,15 +41,14 @@ call plug#begin()
 	Plug 'ap/vim-css-color'
 	Plug 'suwacrab/BetterLua.vim'
 	" colorschemes --------------------------------------@/
-	Plug 'sts10/vim-pink-moon'
-	Plug 'wadackel/vim-dogrun'
 	Plug 'cocopon/iceberg.vim'
-	Plug 'keith/parsec.vim'
-	Plug 'nvimdev/oceanic-material'
 	Plug 'morhetz/gruvbox'
-	Plug 'jaredgorski/Mies.vim'
 	Plug 'suwacrab/stella'
-	Plug 'godlygeek/tabular'
+"	Plug 'sts10/vim-pink-moon'
+"	Plug 'wadackel/vim-dogrun'
+"	Plug 'keith/parsec.vim'
+"	Plug 'nvimdev/oceanic-material'
+"	Plug 'jaredgorski/Mies.vim'
 
 	if has('nvim')
 	"	Plug 'lukas-reineke/indent-blankline.nvim'
@@ -104,7 +104,11 @@ let g:stella_bold=0
 
 "if !has('nvim')
 "	set list lcs=tab:\┊\ 
+if has('win32')
 	set list lcs=tab:\\ 
+else
+	set list lcs=tab:\▕\ 
+endif
 "endif
 
 " gvim --------------------------------------------------@/
@@ -119,11 +123,12 @@ nmap <F8> :TagbarToggle<CR>
 let g:tagbar_show_data_type = 1
 
 " misc ----------------------------------------------------------------------@/
-set background=light
-colorscheme stella
-let g:airline_theme='stella'
+set termguicolors
+set t_Co=256
+set background=dark
+colorscheme gruvbox
+let g:airline_theme="gruvbox"
 set guifont=tewi:h8
-set notermguicolors
 if has("gui_running")
 	set guioptions -=T  " disable GUI toolbar
 	set guioptions -=m  " disable GUI menubar
@@ -132,6 +137,7 @@ if has("gui_running")
 	set guioptions-=L   " ditto
 	set guioptions-=R   " disable GUI right scrollbar
 	set guioptions-=r   " ditto
+	set columns=176     " about 2 screens wide, plus enough for extras
 endif
 set number            " enable line numbers
 set nowrap            " disable line wrapping
@@ -149,7 +155,6 @@ set hlsearch           " highlight when searching
 set incsearch          " also, do that too
 set updatetime=100     " 100ms update (default is 4000)
 set colorcolumn=80     " after 80 columns, show red bar
-set columns=176        " about 2 screens wide, plus enough for extras
 set nocursorcolumn     " no veritcal cursor visual
 
 :noh " clear highlighting, just in case
@@ -170,8 +175,19 @@ endif
 
 " backup file storage -------------------------------------------------------@/
 set swapfile
-" * NOTE: for linux, the below should be uncommented...? haven't tested yet.
-set backupdir=$TEMP//
-set directory=$TEMP//
-set undodir=$TEMP
+" * NOTE: for linux, $TEMP only work, so don't use it.
+if has('win32')
+	set backupdir=$TEMP//
+	set directory=$TEMP//
+	set undodir=$TEMP
+else
+	set backupdir=/tmp//
+	set directory=/tmp//
+	set undodir=/tmp/
+endif
+
+" linux settings ------------------------------------------------------------@/
+if !has('win32')
+	hi Normal guibg=NONE
+endif
 
