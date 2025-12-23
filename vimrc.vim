@@ -24,14 +24,14 @@ call plug#begin()
 	" misc ----------------------------------------------@/
 	Plug 'airblade/vim-gitgutter'
 	Plug 'kshenoy/vim-signature'
-"	Plug 'vim-airline/vim-airline'
-"	Plug 'vim-airline/vim-airline-themes'
 	Plug 'tpope/vim-fugitive'
 	Plug 'markonm/traces.vim'
 	Plug 'preservim/tagbar'
 	Plug 'godlygeek/tabular'
 	if !has('nvim')
 		Plug 'Konfekt/FastFold'
+	"	Plug 'vim-airline/vim-airline'
+	"	Plug 'vim-airline/vim-airline-themes'
 	else
 		Plug 'nvim-lualine/lualine.nvim'
 	endif

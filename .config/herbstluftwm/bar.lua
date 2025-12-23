@@ -94,10 +94,11 @@ execf("herbstclient pad %s %d",MONITOR_ID,
 
 execa('pkill lemonbar')
 
--- setup background
+-- setup background ---------------------------------------------------------@/
 do
 	local bg_table = {
-		"/home/suwa/km/art/other/usa_senzoc_01.png";
+	--	"/home/suwa/km/art/other/usa_senzoc_01.png";
+		"/home/suwa/km/art/other/usa_konchaboy_02.png";
 		"/home/suwa/km/art/other/wall00.png";
 		"/home/suwa/km/art/other/chun_lanlan_moriyas.jpg";
 	}
@@ -293,7 +294,7 @@ while true do
 	textmode_append(" | ")
 	textmode_fgReset()
 	do
-		local maxlen <const> = 105
+		local maxlen <const> = 100
 		local reset_len = is_batCharging and titlescroll.wait_resetLen or titlescroll.wait_resetLenLo
 		local start_len = is_batCharging and titlescroll.wait_startLen or titlescroll.wait_startLenLo
 

@@ -11,7 +11,7 @@ hc emit_hook reload
 pkill picom
 hsetroot -solid '#c7c7c7'
 # picom --backend glx -b
-picom --backend glx -b --config ~/.config/herbstluftwm/picom
+picom --backend glx --config ~/.config/herbstluftwm/picom
 # picom --backend glx -b -i 0.30 --active-opacity 1
 # picom -b --blur-background -i .90 --active-opacity 1
 
