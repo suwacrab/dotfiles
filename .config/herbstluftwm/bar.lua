@@ -51,27 +51,78 @@ local BAR_X = (MONITOR_SIZEX-BAR_WIDTH) / 2
 local BAR_Y = 8
 local MONITOR_ID = 0
 
+-- setup theme --------------------------------------------------------------@/
 local PALETTE_BASE = {
 	fg = "#FFFFFF";
-	fgSel = popen_readRGB("herbstclient get window_border_inner_color");
+	fgSel = "#C78195";
 	fgLight = "#808080";
-	bg = popen_readRGB("herbstclient get frame_border_normal_color");
+	bg = "#101010";
 }
 local PALETTE_DARK = {
 	fg = PALETTE_BASE.fg;
 	fgSel = PALETTE_BASE.fgSel;
 	fgLight = PALETTE_BASE.fgLight;
 	bg = PALETTE_BASE.bg;
+	herbtheme = {
+		colors = {
+			border = '#C78195';
+			border_unsel = '#606060';
+			tab_text = '#202020';
+		};
+	};
 }
 local PALETTE_LITE = {
 	fg = PALETTE_BASE.bg;
 	fgSel = PALETTE_BASE.fgSel;
 	fgLight = "#c0c0c0";
 	bg = PALETTE_BASE.fg;
+	herbtheme = {
+		colors = {
+			border = '_BG';
+			border_unsel = '#606060';
+			tab_text = '#c78195';
+		};
+	};
 }
 
 local PALETTE = PALETTE_DARK
 --PALETTE = PALETTE_LITE
+
+do
+	local pal = PALETTE
+	if pal.herbtheme then
+		local theme = pal.herbtheme
+		local names = {
+			border = { 'theme.active.color', 'theme.active.inner_color', 'theme.active.outer_color' };
+			border_unsel = { 'theme.normal.color', 'theme.normal.inner_color', 'theme.normal.outer_color' };
+			tab_text = 'theme.tab_color';
+		}
+		local clrmap = {
+			_FG = pal.fg;
+			_BG = pal.bg;
+		}
+		for i,_color in next,theme.colors do
+			local name = names[i]
+			local color_real;
+			if clrmap[_color] then
+				local color = clrmap[_color]
+				print(color)
+				color_real = ("'%s'"):format(clrmap[_color])
+			else
+				color_real = ("'%s'"):format(_color)
+			end
+			if type(name) == 'table' then
+				for _,v in next,name do
+					execa('herbstclient attr',v,color_real);
+				end
+			elseif type(name) == 'string' then
+				execa('herbstclient attr',name,color_real);
+			else
+				error(('unknown name %s'):format(i))
+			end
+		end
+	end
+end
 
 local mem_max = tonumber(popen_readFixed('free -m | awk \'/Mem:/ { printf("%3.1f%%", $2) }\''))
 
@@ -355,6 +406,9 @@ while true do
 		local mem_cur = tonumber(popen_readFixed('free -m | awk \'/Mem:/ { printf("%3.1f%%", $3) }\''))
 		local mem_cent = (mem_cur / mem_max)
 		local text = ("%.1fG / %.1fG (%.1f%%)"):format(mem_cur/1024,mem_max/1024,mem_cent*100)
+		if mem_cent >= 0.81 then
+			execa('pkill firefox -9')
+		end
 		if mem_cent >= 0.70 then
 			local warning_str = "[!!!] " or " "
 			local newtext = ("%s%s"):format(warning_str,text)
@@ -380,9 +434,6 @@ while true do
 			local divisions = 4
 
 			local batlevel_cent = (batlevel_now / batlevel_max) * 100
-			if batlevel_cent >= 79 then
-				execa('pkill firefox -9')
-			end
 			local batlevel_str = ("%.1f%% "):format(batlevel_cent)
 			if is_halftick and (not is_batCharging) then
 				batlevel_str = (" "):rep(#batlevel_str)
