@@ -104,9 +104,9 @@ hc keybind $Mod-p pseudotile toggle
 # The following cycles through the available layouts within a frame, but skips
 # layouts, if the layout change wouldn't affect the actual window positions.
 # I.e. if there are two windows within a frame, the grid layout is skipped.
-hc keybind $Mod-space                                                           \
-            or , and . compare tags.focus.curframe_wcount = 2                   \
-                     . cycle_layout +1 vertical horizontal max vertical grid    \
+hc keybind $Mod-space                                                         \
+            or , and . compare tags.focus.curframe_wcount = 2                 \
+                     . cycle_layout +1 vertical horizontal max vertical grid  \
                , cycle_layout +1
 
 # mouse
@@ -130,7 +130,7 @@ hc set frame_border_normal_color '#101010cc'
 hc set frame_bg_normal_color '#565656aa'
 hc set frame_bg_active_color '#345F0Caa'
 hc set frame_border_width 0
-hc set always_show_frame on
+hc set show_frame_decorations none
 hc set frame_bg_transparent on
 hc set frame_transparent_width 1
 hc set frame_gap 8
