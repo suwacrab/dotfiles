@@ -69,6 +69,9 @@ local PALETTE_DARK = {
 			border_unsel = '#606060';
 			tab_text = '#202020';
 		};
+		misc = {
+			border_width = 1;
+		}
 	};
 }
 local PALETTE_LITE = {
@@ -82,6 +85,9 @@ local PALETTE_LITE = {
 			border_unsel = '#606060';
 			tab_text = '#c78195';
 		};
+		misc = {
+
+		}
 	};
 }
 
@@ -96,12 +102,19 @@ do
 			border = { 'theme.active.color', 'theme.active.inner_color', 'theme.active.outer_color' };
 			border_unsel = { 'theme.normal.color', 'theme.normal.inner_color', 'theme.normal.outer_color' };
 			tab_text = 'theme.tab_color';
+			border_width = { 'theme.border_width', 'theme.floating.border_width' }
 		}
 		local clrmap = {
 			_FG = pal.fg;
 			_BG = pal.bg;
 		}
-		for i,_color in next,theme.colors do
+		local all_list = {
+
+		}
+		for i,v in next,theme.colors do all_list[i] = v end
+		for i,v in next,theme.misc do all_list[i] = v end
+
+		for i,_color in next,all_list do
 			local name = names[i]
 			local color_real;
 			if clrmap[_color] then
