@@ -380,6 +380,9 @@ while true do
 			local divisions = 4
 
 			local batlevel_cent = (batlevel_now / batlevel_max) * 100
+			if batlevel_cent >= 79 then
+				execa('pkill firefox -9')
+			end
 			local batlevel_str = ("%.1f%% "):format(batlevel_cent)
 			if is_halftick and (not is_batCharging) then
 				batlevel_str = (" "):rep(#batlevel_str)
