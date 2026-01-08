@@ -90,11 +90,9 @@ endif
 let g:airline_symbols.linenr=''
 "let g:airline_symbols.maxlinenr=''
 
-
-
 " markdown ----------------------------------------------@/
 let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_fenced_languages= ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini', 'c']
+let g:vim_markdown_fenced_languages= ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini', 'lua=lua', 'c']
 " let g:vim_markdown_fenced_languages= ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini']
 
 " fastfold ----------------------------------------------@/
@@ -132,8 +130,8 @@ let g:tagbar_show_data_type = 1
 " misc ----------------------------------------------------------------------@/
 set termguicolors
 set t_Co=256
-set background=dark
-colorscheme gruvbox
+set background=light
+colorscheme stella
 let g:airline_theme="gruvbox"
 set guifont=tewi:h8
 if has("gui_running")
